@@ -2,9 +2,11 @@ import 'package:checkout_payment/payment/presentation/views/my_cart_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  setupServiceLocator();
   runApp(const CheckoutApp());
-
 }
+
+void setupServiceLocator() {}
 
 class CheckoutApp extends StatelessWidget {
   const CheckoutApp({super.key});
@@ -17,4 +19,3 @@ class CheckoutApp extends StatelessWidget {
     );
   }
 }
-
