@@ -14,7 +14,7 @@ class ApiServicesImplementation extends ApiServices {
       connectTimeout: const Duration(seconds: 15),
       receiveTimeout: const Duration(seconds: 15),
       headers: {
-        'Authorization': 'Bearer ${EndPoints.token}',
+        'Authorization': 'Bearer ${EndPoints.secretKey}',
         'Content-Type': 'application/json',
       },
     );

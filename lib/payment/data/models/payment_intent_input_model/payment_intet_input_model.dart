@@ -1,8 +1,8 @@
-class PaymentIntetInputModel {
+class PaymentIntentInputModel {
   final String amount;
   final String currency;
 
- const  PaymentIntetInputModel({
+ const  PaymentIntentInputModel({
     required this.amount,
     required this.currency,
   });
