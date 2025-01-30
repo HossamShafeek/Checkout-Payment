@@ -1,6 +1,6 @@
 import 'package:checkout_payment/core/api/api_services.dart';
 import 'package:checkout_payment/core/api/end_points.dart';
-import 'package:checkout_payment/core/stripe/stripe_service.dart';
+import 'package:checkout_payment/core/utils/stripe_service/stripe_service.dart';
 import 'package:checkout_payment/payment/data/models/payment_intent_input_model/payment_intet_input_model.dart';
 import 'package:checkout_payment/payment/data/models/payment_intent_model/payment_intent_model.dart';
 import 'package:dio/dio.dart';
