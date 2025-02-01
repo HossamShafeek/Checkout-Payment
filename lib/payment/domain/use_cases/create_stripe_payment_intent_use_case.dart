@@ -15,7 +15,7 @@ class CreateStripePaymentIntentUseCase
   @override
   Future<Either<Failure, String>> call(
       {required PaymentIntentInputModel params}) async {
-    return await stripeRepository.createPaymentIntent(
+    return await stripeRepository.createPaymentOperation(
         paymentIntentInputModel: params);
   }
 }

@@ -4,16 +4,16 @@ abstract class StripeStates {
 
 class StripeInitailState extends StripeStates {}
 
-class CreatePaymentIntentLoadnigState extends StripeStates {}
+class CreateStripePaymentIntentLoadnigState extends StripeStates {}
 
-class CreatePaymentIntentSuccessState extends StripeStates {
+class CreateStripePaymentIntentSuccessState extends StripeStates {
   final String message;
 
- const CreatePaymentIntentSuccessState({required this.message});
+  const CreateStripePaymentIntentSuccessState({required this.message});
 }
 
-class CreatePaymentIntentFailureState extends StripeStates {
+class CreateStripePaymentIntentFailureState extends StripeStates {
   final String failure;
 
-  const CreatePaymentIntentFailureState({required this.failure});
+  const CreateStripePaymentIntentFailureState({required this.failure});
 }

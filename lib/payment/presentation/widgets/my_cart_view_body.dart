@@ -1,9 +1,15 @@
+import 'package:checkout_payment/core/api/api_services_implementation.dart';
+import 'package:checkout_payment/core/utils/stripe_service/stripe_service_implementation.dart';
 import 'package:checkout_payment/core/widgets/custom_button.dart';
+import 'package:checkout_payment/payment/data/repositories/stripe_repository_implementation.dart';
+import 'package:checkout_payment/payment/domain/use_cases/create_stripe_payment_intent_use_case.dart';
+import 'package:checkout_payment/payment/presentation/cubits/stripe_cubit/stripe_cubit.dart';
 import 'package:checkout_payment/payment/presentation/widgets/cart_info_item.dart';
-import 'package:checkout_payment/payment/presentation/widgets/payment_methods_list_view.dart';
+import 'package:checkout_payment/payment/presentation/widgets/payment_methods_bottom_sheet.dart';
 import 'package:checkout_payment/payment/presentation/widgets/total_price_widget.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyCartViewBody extends StatelessWidget {
   const MyCartViewBody({super.key});
@@ -56,41 +62,32 @@ class MyCartViewBody extends StatelessWidget {
               // }));
 
               showModalBottomSheet(
-                  context: context,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16)),
-                  builder: (context) {
-                    return const PaymentMethodsBottomSheet();
-                  });
+                context: context,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(25),
+                  ),
+                ),
+                builder: (context) {
+                  return BlocProvider(
+                      create: (context) => StripeCubit(
+                            createStripePaymentIntentUseCase:
+                                CreateStripePaymentIntentUseCase(
+                              stripeRepository: StripeRepositoryImplementation(
+                                stripeService: StripeServiceImplementation(
+                                  apiServices: ApiServicesImplementation(),
+                                ),
+                              ),
+                            ),
+                          ),
+                      child: const PaymentMethodsBottomSheet());
+                },
+              );
             },
           ),
           const SizedBox(
             height: 12,
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class PaymentMethodsBottomSheet extends StatelessWidget {
-  const PaymentMethodsBottomSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            height: 16,
-          ),
-          PaymentMethodsListView(),
-          SizedBox(
-            height: 32,
-          ),
-          CustomButton(text: 'Continue'),
         ],
       ),
     );

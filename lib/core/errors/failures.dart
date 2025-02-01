@@ -35,7 +35,7 @@ class ServerFailure extends Failure {
             'Please check your internet connection and try again.');
       case DioExceptionType.unknown:
         return ServerFailure('Unexpected Error, Please try again.');
-      }
+    }
   }
 
   factory ServerFailure.fromDioResponse(int statsCode, dynamic response) {
@@ -45,7 +45,7 @@ class ServerFailure extends Failure {
       case 403:
       case 422:
       case 404:
-        return ServerFailure(response['message']);
+        return ServerFailure(response['error']['message']);
       case 500:
         return ServerFailure('Internal server error, Please try later!');
       default:

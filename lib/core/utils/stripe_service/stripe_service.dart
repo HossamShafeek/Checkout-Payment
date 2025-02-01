@@ -13,7 +13,7 @@ abstract class StripeService {
   Future<void> initPaymentSheet({required String paymentIntentClientSecret});
 
   Future<void> displayPaymentSheet();
-  
-  Future<void> makePaymentIntent(
+
+  Future<void> createPaymentOperation(
       {required PaymentIntentInputModel paymentIntentInputModel});
 }

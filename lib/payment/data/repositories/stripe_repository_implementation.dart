@@ -11,10 +11,10 @@ class StripeRepositoryImplementation extends StripeRepository {
   StripeRepositoryImplementation({required this.stripeService});
 
   @override
-  Future<Either<Failure, String>> createPaymentIntent(
+  Future<Either<Failure, String>> createPaymentOperation(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     try {
-      stripeService.makePaymentIntent(
+     await stripeService.createPaymentOperation(
           paymentIntentInputModel: paymentIntentInputModel);
       return Right('');
     } catch (error) {

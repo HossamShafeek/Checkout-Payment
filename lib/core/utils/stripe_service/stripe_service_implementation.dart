@@ -18,6 +18,12 @@ class StripeServiceImplementation extends StripeService {
   @override
   Future<PaymentIntentModel> createPaymentIntent(
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
+    apiServices.setHeaders(
+      headers: {
+        'Authorization': 'Bearer ${EndPoints.secretKey}',
+        'Content-Type': Headers.formUrlEncodedContentType,
+      },
+    );
     Response response = await apiServices.post(
         endPoint: EndPoints.createPaymentIntent,
         data: paymentIntentInputModel.toJson());
@@ -25,11 +31,11 @@ class StripeServiceImplementation extends StripeService {
         PaymentIntentModel.fromJson(response.data);
     return paymentIntentModel;
   }
- 
+
   @override
   Future<void> initPaymentSheet(
       {required String paymentIntentClientSecret}) async {
-    Stripe.instance.initPaymentSheet(
+    await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
         paymentIntentClientSecret: paymentIntentClientSecret,
         merchantDisplayName: 'Hossam Shafeek',
@@ -39,11 +45,11 @@ class StripeServiceImplementation extends StripeService {
 
   @override
   Future<void> displayPaymentSheet() async {
-    Stripe.instance.presentPaymentSheet();
+    await Stripe.instance.presentPaymentSheet();
   }
 
   @override
-  Future<void> makePaymentIntent({
+  Future<void> createPaymentOperation({
     required PaymentIntentInputModel paymentIntentInputModel,
   }) async {
     PaymentIntentModel paymentIntentModel = await createPaymentIntent(

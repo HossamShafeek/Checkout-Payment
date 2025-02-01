@@ -11,16 +11,18 @@ class StripeCubit extends Cubit<StripeStates> {
 
   final CreateStripePaymentIntentUseCase createStripePaymentIntentUseCase;
 
-  StripeCubit get(BuildContext context) => BlocProvider.of(context);
+  static StripeCubit get(BuildContext context) => BlocProvider.of(context);
 
-  Future<void> createPaymentIntent({required paymentIntentInputModel}) async {
-    emit(CreatePaymentIntentLoadnigState());
+  Future<void> createPaymentOperation(
+      {required paymentIntentInputModel}) async {
+    emit(CreateStripePaymentIntentLoadnigState());
     Either<Failure, String> result = await createStripePaymentIntentUseCase
         .call(params: paymentIntentInputModel);
     result.fold((failure) {
-      emit(CreatePaymentIntentFailureState(failure: failure.toString()));
+      emit(CreateStripePaymentIntentFailureState(
+          failure: failure.error.toString()));
     }, (message) {
-      emit(CreatePaymentIntentSuccessState(message: message));
+      emit(CreateStripePaymentIntentSuccessState(message: message));
     });
   }
 }

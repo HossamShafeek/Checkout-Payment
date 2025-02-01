@@ -3,7 +3,7 @@ import 'package:checkout_payment/payment/data/models/payment_intent_input_model/
 import 'package:dartz/dartz.dart';
 
 abstract class StripeRepository {
-  Future<Either<Failure, String>> createPaymentIntent({
+  Future<Either<Failure, String>> createPaymentOperation({
     required PaymentIntentInputModel paymentIntentInputModel,
   });
 }
