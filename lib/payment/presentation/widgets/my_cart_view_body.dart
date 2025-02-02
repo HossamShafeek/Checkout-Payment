@@ -1,8 +1,5 @@
-import 'package:checkout_payment/core/api/api_services_implementation.dart';
-import 'package:checkout_payment/core/utils/stripe_service/stripe_service_implementation.dart';
+import 'package:checkout_payment/core/utils/service_locator.dart';
 import 'package:checkout_payment/core/widgets/custom_button.dart';
-import 'package:checkout_payment/payment/data/repositories/stripe_repository_implementation.dart';
-import 'package:checkout_payment/payment/domain/use_cases/create_stripe_payment_intent_use_case.dart';
 import 'package:checkout_payment/payment/presentation/cubits/stripe_cubit/stripe_cubit.dart';
 import 'package:checkout_payment/payment/presentation/widgets/cart_info_item.dart';
 import 'package:checkout_payment/payment/presentation/widgets/payment_methods_bottom_sheet.dart';
@@ -70,16 +67,7 @@ class MyCartViewBody extends StatelessWidget {
                 ),
                 builder: (context) {
                   return BlocProvider(
-                      create: (context) => StripeCubit(
-                            createStripePaymentIntentUseCase:
-                                CreateStripePaymentIntentUseCase(
-                              stripeRepository: StripeRepositoryImplementation(
-                                stripeService: StripeServiceImplementation(
-                                  apiServices: ApiServicesImplementation(),
-                                ),
-                              ),
-                            ),
-                          ),
+                      create: (context) => getIt<StripeCubit>(),
                       child: const PaymentMethodsBottomSheet());
                 },
               );

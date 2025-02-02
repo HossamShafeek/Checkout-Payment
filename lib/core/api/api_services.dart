@@ -22,8 +22,8 @@ abstract class ApiServices {
     dynamic data,
   });
 
-   void setBaseUrl({required  baseUrl});
+  void setBaseUrl({required baseUrl});
   void setHeaders({
-  required Map<String,dynamic> headers,
+    required Map<String, dynamic> headers,
   });
 }

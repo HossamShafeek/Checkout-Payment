@@ -1,6 +1,5 @@
 import 'package:checkout_payment/core/utils/show_snack_bar.dart';
 import 'package:checkout_payment/core/widgets/custom_button.dart';
-import 'package:checkout_payment/payment/data/models/payment_intent_input_model/payment_intet_input_model.dart';
 import 'package:checkout_payment/payment/presentation/cubits/stripe_cubit/stripe_cubit.dart';
 import 'package:checkout_payment/payment/presentation/cubits/stripe_cubit/stripe_states.dart';
 import 'package:checkout_payment/payment/presentation/views/thank_you_view.dart';
@@ -13,6 +12,7 @@ class PaymentMethodsBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    StripeCubit stripeCubit = context.read<StripeCubit>();
     return Padding(
       padding: EdgeInsets.all(16),
       child: Column(
@@ -43,11 +43,8 @@ class PaymentMethodsBottomSheet extends StatelessWidget {
             builder: (context, state) {
               return CustomButton(
                 onTap: () {
-                  StripeCubit.get(context).createPaymentOperation(
-                    paymentIntentInputModel: PaymentIntentInputModel(
-                      amount: '100',
-                      currency: 'USD',
-                    ),
+                stripeCubit.createPaymentOperation(
+                    amount:100,
                   );
                 },
                 isLoading: state is CreateStripePaymentIntentLoadnigState,
