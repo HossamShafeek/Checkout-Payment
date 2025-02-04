@@ -11,11 +11,11 @@ class CacheHelper {
     required String key,
     required String value,
   }) async {
-    return await storage.write(key:key, value:value);
+    return await storage.write(key: key, value: value);
   }
 
   static Future<String?> getData({required String key}) {
-    return storage.read(key:key);
+    return storage.read(key: key);
   }
 
   static Future<void> removeData({
@@ -23,5 +23,4 @@ class CacheHelper {
   }) async {
     return await storage.delete(key: key);
   }
-
 }

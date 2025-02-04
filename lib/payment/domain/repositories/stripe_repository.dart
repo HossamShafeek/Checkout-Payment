@@ -11,12 +11,11 @@ abstract class StripeRepository {
     required PaymentIntentInputModel paymentIntentInputModel,
   });
 
-Future<Either<Failure, CustomerModel>> createCustomer({
+  Future<Either<Failure, CustomerModel>> createCustomer({
     required CreateCustomerInputModel createCustomerInputModel,
   });
 
   Future<Either<Failure, EphemeralKeyModel>> createEphemeralKey({
     required String customerId,
   });
-
 }

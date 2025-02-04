@@ -10,7 +10,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
-  Stripe.publishableKey = EndPoints.puplishableKey;
+  Stripe.publishableKey = EndPoints.stripePuplishableKey;
   setupServiceLocator();
   await CacheHelper.init();
   runApp(const CheckoutApp());

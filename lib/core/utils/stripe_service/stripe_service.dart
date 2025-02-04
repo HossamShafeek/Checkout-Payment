@@ -14,16 +14,16 @@ abstract class StripeService {
     required PaymentIntentInputModel paymentIntentInputModel,
   });
 
-  Future<void> initPaymentSheet({required InitPaymentSheetInputModel initPaymentSheetInputModel});
+  Future<void> initPaymentSheet(
+      {required InitPaymentSheetInputModel initPaymentSheetInputModel});
 
   Future<void> displayPaymentSheet();
 
   Future<void> createPaymentOperation(
       {required PaymentIntentInputModel paymentIntentInputModel});
 
-  Future<CustomerModel> createCustomer({
-  required CreateCustomerInputModel createCustomerInputModel
-  });
+  Future<CustomerModel> createCustomer(
+      {required CreateCustomerInputModel createCustomerInputModel});
 
   Future<EphemeralKeyModel> createEphemeralKey({required String customerId});
 }

@@ -7,6 +7,4 @@ class InitPaymentSheetInputModel {
     required this.customerId,
     required this.ephemeralKeySecret,
   });
-
-
 }

@@ -20,7 +20,7 @@ class StripeServiceImplementation extends StripeService {
       {required CreateCustomerInputModel createCustomerInputModel}) async {
     apiServices.setHeaders(
       headers: {
-        'Authorization': 'Bearer ${EndPoints.secretKey}',
+        'Authorization': 'Bearer ${EndPoints.stripeSecretKey}',
         'Content-Type': Headers.formUrlEncodedContentType,
       },
     );
@@ -36,7 +36,7 @@ class StripeServiceImplementation extends StripeService {
       {required String customerId}) async {
     apiServices.setHeaders(
       headers: {
-        'Authorization': 'Bearer ${EndPoints.secretKey}',
+        'Authorization': 'Bearer ${EndPoints.stripeSecretKey}',
         'Content-Type': Headers.formUrlEncodedContentType,
         'Stripe-Version': '2025-01-27.acacia',
       },
@@ -55,7 +55,7 @@ class StripeServiceImplementation extends StripeService {
       {required PaymentIntentInputModel paymentIntentInputModel}) async {
     apiServices.setHeaders(
       headers: {
-        'Authorization': 'Bearer ${EndPoints.secretKey}',
+        'Authorization': 'Bearer ${EndPoints.stripeSecretKey}',
         'Content-Type': Headers.formUrlEncodedContentType,
       },
     );

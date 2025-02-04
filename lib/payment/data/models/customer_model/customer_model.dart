@@ -104,6 +104,4 @@ class CustomerModel {
         'tax_exempt': taxExempt,
         'test_clock': testClock,
       };
-
-
 }

@@ -5,14 +5,16 @@ import 'package:checkout_payment/payment/data/models/customer_model/customer_mod
 import 'package:checkout_payment/payment/domain/repositories/stripe_repository.dart';
 import 'package:dartz/dartz.dart';
 
-class CreateCustomerUseCase extends UseCase< CustomerModel,CreateCustomerInputModel>{
-
-final StripeRepository stripeRepository;
+class CreateCustomerUseCase
+    extends UseCase<CustomerModel, CreateCustomerInputModel> {
+  final StripeRepository stripeRepository;
 
   CreateCustomerUseCase({required this.stripeRepository});
 
   @override
-  Future<Either<Failure, CustomerModel>> call({required CreateCustomerInputModel params})async {
-   return await stripeRepository.createCustomer(createCustomerInputModel: params);
+  Future<Either<Failure, CustomerModel>> call(
+      {required CreateCustomerInputModel params}) async {
+    return await stripeRepository.createCustomer(
+        createCustomerInputModel: params);
   }
 }
